@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-11-29 21:53:09 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="entity.Teacher" table="teacher" catalog="lqmsql">
+        <id name="tid" type="java.lang.Integer">
+            <column name="tid" />
+            <generator class="identity" />
+        </id>
+        <property name="age" type="java.lang.Integer">
+            <column name="age" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" />
+        </property>
+        <property name="tel" type="string">
+            <column name="tel" length="50" not-null="true" />
+        </property>
+        <property name="teaId" type="string">
+            <column name="tea_id" length="50" not-null="true" />
+        </property>
+        <property name="tpassword" type="string">
+            <column name="tpassword" length="50" not-null="true" />
+        </property>
+        <property name="tname" type="string">
+            <column name="tname" length="50" not-null="true" />
+        </property>
+        <property name="sex" type="string">
+            <column name="tsex" length="10" not-null="true" />
+        </property>
+        <property name="department" type="string">
+            <column name="department" length="30" not-null="true" />
+        </property>
+        <property name="jiguan" type="string">
+            <column name="jiguan" length="60" not-null="true" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-11-29 21:53:09 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="entity.Classes" table="classes" catalog="lqmsql">
+        <id name="csId" type="java.lang.Integer">
+            <column name="cs_id" />
+            <generator class="identity" />
+        </id>
+        <property name="cname" type="string">
+            <column name="cName" length="60" />
+        </property>
+        <property name="cmark" type="string">
+            <column name="cmark" length="50" />
+        </property>
+        <property name="courTime" type="string">
+            <column name="cour_time" length="50" />
+        </property>
+        <property name="roomId" type="string">
+            <column name="room_id" length="50" />
+        </property>
+        <property name="teaId" type="string">
+            <column name="tea_id" length="50" />
+        </property>
+        <property name="chooseMax" type="java.lang.Integer">
+            <column name="chooseMax" />
+        </property>
+        <property name="chooseCurNum" type="java.lang.Integer">
+            <column name="chooseCurNum" />
+        </property>
+        <set name="students" table="student_classes"  lazy="false"  cascade="save-update">
+            <key column="cs_id" />
+            
+            <many-to-many class="entity.Student" column="st_id" />
+        </set>
+    </class>
+</hibernate-mapping>

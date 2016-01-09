@@ -1,0 +1,114 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: mm -->
+ 
+<struts>
+    <package name="admin"  extends="struts-default">
+        <!--添加学生-->
+        <action name="adduser" class="AdminAction.Adduser">
+        <result name="success">/admin/success.jsp</result>
+        <result name="input">/admin/error.jsp</result>
+        </action>
+        <!--添加教师-->
+        <action name="addteacher" class="AdminAction.AddTeacher">
+        <result name="success">/admin/success.jsp</result>
+        <result name="input">/admin/error.jsp</result>
+        </action>
+        <!--添加课程-->
+        <action name="addclasses" class="AdminAction.AddClasses">
+        <result name="success" >/admin/success.jsp</result>    
+        <result name="input">/admin/error.jsp</result>
+        </action>
+        <!--分页显示-->
+        <action name="pageAction" class="AdminAction.PageAction">
+            <result type="redirect" >/allStudent?pageNumber=${pageNumber}&amp;totalPage=${totalPage}</result>   
+        </action>
+        <!--所有学生-->
+         <action name="allStudent" class="AdminAction.AllStudent">
+             <result>/admin/allstudent.jsp</result>
+         </action>
+         <!--查看学生信息-->
+         <action name="getStudent" class="Action.GetStudent" method="showstudent">
+         <result name="success">/admin/getStudent.jsp</result>
+         <result name="input">/admin/error.jsp</result>
+        </action>
+        <!--删除学生-->
+        <action name="dStudent" class="Action.DeleteStudent">
+           <result type="redirectAction">/pageAction</result>    
+        </action>
+        <!--添加学生-->
+         <action name="addStudent" class="Action.defaultAction">
+        <result name="success">/admin/addstudent.jsp</result>    
+        </action>
+        <!--导入学生表-->
+        <action name="import" class="AdminAction.ImportExcelAction">
+        <result name="success">/admin/importDisp.jsp</result>
+        <result name="error">/admin/error.jsp</result>
+        </action>
+        <!--导入教师-->
+        <action name="importth" class="AdminAction.ImportTeacher">
+         <result name="success">/admin/importThDisp.jsp</result> 
+         <result name="input">/admin/error.jsp</result>
+        </action>
+         <!--查看所有课程-->
+          <action name="cpageAction" class="AdminAction.CpageAction">
+            <result type="redirect" >/allClasses?pageNumber=${pageNumber}&amp;totalPage=${totalPage}</result>   
+        </action>
+        <action name="allClasses" class="AdminAction.AllClasses">
+           <result>/admin/choiceclass.jsp</result>   
+        </action> 
+        <!--获取课程-->
+        <action name="skanCs" class="AdminAction.getCs">
+        <result name="success">/admin/getClasses.jsp</result>
+        <result name="input">/admin/error.jsp</result>
+        </action> 
+        <!--更新课程-->
+        <action name="updataClasses" class="AdminAction.AddClasses" method="updataClasses">
+        <result name="success">/admin/success.jsp</result>
+        <result name="input">/admin/error.jsp</result>
+        </action>
+        <!--删除课程-->
+        <action name="deleCs" class="AdminAction.DguClasses">
+        <result name="success">/admin/success.jsp</result>
+        <result name="input">/admin/error.jsp</result>
+        </action>
+        <!--添加课程-->
+         <action name="addClasses" class="Action.defaultAction">
+        <result name="success">/admin/addclasses.jsp</result>    
+        </action>
+        
+        <!--查看所有教师-->
+         <action name="tpageAction" class="AdminAction.TpageAction">
+            <result type="redirect" >/allTeacher?pageNumber=${pageNumber}&amp;totalPage=${totalPage}</result>   
+        </action>
+        <action name="allTeacher" class="AdminAction.AllTeacher">
+           <result name="success">/admin/allteacher.jsp</result>   
+        </action>
+        <!--获取教师信息-->
+        <action name="getTeacher" class="AdminAction.DguTeacher" method="getTeacher">
+        <result name="success">/admin/getTeacher.jsp</result>
+        <result name="input">/admin/error.jsp</result>
+        </action>
+        <!--修改教师信息-->
+        <action name="updataTeacher" class="AdminAction.AddTeacher" method="updataTeacher">
+        <result name="success">/admin/success.jsp</result>
+        <result name="input">/admin/error.jsp</result>
+        </action>
+        <!--删除教师-->
+        <action name="deleTeacher" class="AdminAction.DguTeacher">
+          <result name="success">/admin/success.jsp</result>
+          <result name="input">/admin/error.jsp</result>
+        </action>
+        <!--添加教师-->
+        <action name="addTeacher" class="Action.defaultAction">
+        <result name="success">/admin/addteacher.jsp</result>    
+        </action>
+        <!--修改管理员密码-->
+        <action name="changAd" class="AdminAction.changPass">
+        <result name="success">/admin/success.jsp</result> 
+        <result name="input">/admin/error.jsp</result>
+        </action>
+        </package>
+</struts>

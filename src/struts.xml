@@ -1,0 +1,146 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <include file="Admin.xml"/>
+    <include file="Teacher.xml"/>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <!--登录-->
+        <action name="login" class="Action.Login">
+              <result name="success">/student/index.jsp</result>  
+              <result name="tsuccess" type="redirect">/teacher/index.jsp</result>
+              <result name="asuccess" type="redirect">/admin/index.jsp</result>
+              <result name="input" type="redirect">/index.jsp</result>
+        </action>
+        <action name="editStudent" class="Action.GetStudent" method="editStudent">
+            <result>/student/editStudent.jsp</result>
+        </action>
+        <!--增加学生-->
+        <action name="saveStudent" class="Action.SaveStudent">
+            <result>/student/addStudent.jsp</result> 
+           <result name="input">/student/addStudent.jsp</result>
+        </action>
+        <action name="updateStudent" class="Action.UpdateStudent">
+            <result type="redirect">/getStudent.Action</result>    
+        </action>
+        <!--查看个人信息-->
+        <action name="showStudent" class="Action.GetStudent" method="showstudent1 " >
+             <result name="success">/student/getStudent.jsp</result>
+             <result name="input">/student/error.jsp</result>
+        </action> 
+         <action name="skanStudent" class="Action.GetStudent" method="showstudent1 " >
+             <result name="success">/student/skanstudent.jsp</result>
+             <result name="input">/student/error.jsp</result>
+        </action> 
+        <!--修改密码-->
+        <action name="chang" class="Action.GetStudent" method="showstudent1 " >
+            <result name="success">/student/changpassword.jsp</result>
+            <result name="input">/student/student.jsp</result>
+        </action> 
+        <action name="updateStudent" class="Action.UpdateStudent">
+            <result name="input" type="redirect">/chang</result>
+            <result name="success" >/student/changpasssuccess.jsp</result>
+        </action>
+        <!--个人信息修改-->
+        <action name="upstudent" class="Action.UpStudent">
+             <result name="success">/student/success.jsp</result>
+            <result name="input">/student/student.jsp</result>
+        </action>
+        <!--上传照片-->
+        <action name="myUpload" class="Action.MyUpload">                  
+          <param name="path">/upload</param>
+            <result name="success" >/uploadSuccess.jsp</result> 
+            <result name="input">/student/student.jsp</result>
+        </action>
+        <!-- 选课 -->
+        <action name="choose" class="Action.ChooseCourseAction">                  
+            <result name="success" >/student/Mainchoose.jsp</result> 
+            <result name="myclass">/student/myClasses.jsp</result>
+            <result name="cancelSuccess" type="redirectAction" >choose!myClasses.action</result>
+            <result name="chooseSuccess" type="redirectAction" >choose</result> 
+             <result name="chooseOver">/student/chooseOver.jsp</result> 
+            <result name="viewDetail">/student/CourseDetail.jsp</result>
+            <result name="error">/student/error.jsp</result>
+            <result name="exist">/studen/exist.jsp</result>
+        </action>
+        <!--选课成绩-->
+        <action name="cscore" class="Action.Score">
+            <result name="SUCCESS">/student/stscore.jsp</result>
+        </action>
+        <!--退出登录-->
+          <action name="clear"  class="Action.ClearUser">
+          <result name="success" type="redirect">index.jsp</result>
+          <result name="input">/student/student.jsp</result>
+           </action> 
+             <action name="download1" class="Action.FileDownloadAction">
+		<!-- 指定被下载资源的位置 -->
+			<param name="inputPath">/WEB-INF/upload/考试大纲.doc</param>
+			<!-- 配置结果类型为stream的结果 -->
+			<result type="stream">
+				<!-- 指定下载文件的文件类型 -->
+				<param name="contentType">application/msword</param>
+				<!-- 指定由getTargetFile()方法返回被下载文件的InputStream -->
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">filename="考试大纲.doc"</param>
+				<!-- 指定下载文件的缓冲大小 -->
+				<param name="bufferSize">4096</param>
+			</result> 
+			</action>
+			<action name="download2" class="Action.FileDownloadAction">
+		<!-- 指定被下载资源的位置 -->
+			<param name="inputPath">/WEB-INF/upload/作业讲解.doc</param>
+			<!-- 配置结果类型为stream的结果 -->
+			<result type="stream">
+				<!-- 指定下载文件的文件类型 -->
+				<param name="contentType">application/msword</param>
+				<!-- 指定由getTargetFile()方法返回被下载文件的InputStream -->
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">filename="作业讲解.doc"</param>
+				<!-- 指定下载文件的缓冲大小 -->
+				<param name="bufferSize">4096</param>
+			</result> 
+			</action>
+			<action name="download3" class="Action.FileDownloadAction">
+		<!-- 指定被下载资源的位置 -->
+			<param name="inputPath">/WEB-INF/upload/课件.ppt</param>
+			<!-- 配置结果类型为stream的结果 -->
+			<result type="stream">
+				<!-- 指定下载文件的文件类型 -->
+				<param name="contentType">appication/powerpoint</param>
+				<!-- 指定由getTargetFile()方法返回被下载文件的InputStream -->
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">filename="课件.ppt"</param>
+				<!-- 指定下载文件的缓冲大小 -->
+				<param name="bufferSize">4096</param>
+			</result> 
+			</action>
+			<action name="download4" class="Action.FileDownloadAction">
+			<!-- 定义被下载文件的物理资源 -->
+			<param name="inputPath">/WEB-INF/upload/历届考试题.zip</param>
+			<result type="stream">
+				<!-- 指定下载文件的文件类型 -->
+				<param name="contentType">application/zip</param>
+				<!-- 指定由getTargetFile()方法返回被下载文件的InputStream -->
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">filename="历届考试题.zip"</param>
+				<!-- 指定下载文件的缓冲大小 -->
+				<param name="bufferSize">4096</param>
+			</result>
+			</action>	
+			<action name="download5" class="Action.FileDownloadAction">
+			<!-- 定义被下载文件的物理资源 -->
+			<param name="inputPath">/WEB-INF/upload/章节重点.jpg</param>
+			<result type="stream">
+				<!-- 指定下载文件的文件类型 -->
+				<param name="contentType">image/jpeg</param>
+				<!-- 指定由getTargetFile()方法返回被下载文件的InputStream -->
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">filename="章节重点.jpg"</param>
+				<!-- 指定下载文件的缓冲大小 -->
+				<param name="bufferSize">4096000000</param>
+			</result>
+			</action>			
+   </package>
+</struts>

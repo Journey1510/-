@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-11-29 21:53:09 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="entity.Score" table="score" catalog="lqmsql">
+        <id name="scid" type="java.lang.Integer">
+            <column name="scid" />
+            <generator class="identity" />
+        </id>
+        <property name="sno" type="java.lang.Integer">
+            <column name="sNo" />
+        </property>
+        <property name="tno" type="java.lang.Integer">
+            <column name="tNo" />
+        </property>
+        <property name="tname" type="java.lang.string">
+            <column name="tName" />
+        </property>
+        <property name="cno" type="java.lang.Integer">
+            <column name="cNo" />
+        </property>
+        <property name="cdep" type="string">
+            <column name="cDep" length="50" />
+        </property>
+        <property name="cmark" type="java.lang.Integer">
+            <column name="cMark" />
+        </property>
+        <property name="cname" type="string">
+            <column name="cName" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
