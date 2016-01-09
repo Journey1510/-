@@ -17,6 +17,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
         #ge{ height:20px; background-color:#AAEC79;}
         </style>
     </head>
+    
     <body id="ge"><center><table border="1">
             <tr>
             <td>序列</td>
